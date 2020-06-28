@@ -1,5 +1,6 @@
 <div class="px-3 py-2 tweet-box">
-    <form action="">
+    <form action="/tweet" method="POST">
+        @csrf
     <textarea
         name="body"
         placeholder="what's up doc?"
