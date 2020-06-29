@@ -10,15 +10,17 @@ class TweetController extends Controller
 {
     public function index()
     {
-        $tweets =auth()->user()->timeline();
-        return view('home',['tweets'=>$tweets]);
+        $tweets = auth()->user()->timeline();
+        return view('home', ['tweets' => $tweets]);
     }
 
     public function store(User $user)
     {
-        request()->validate(['body' => 'required']);
-        Tweet::create(['user_id' => auth()->user()->id,
-            'body' => \request('body')]);
+         request()->validate(['body' => 'required|max:255']);
+        Tweet::create([
+            'user_id' => auth()->user()->id,
+            'body' => request('body')
+        ]);
         return redirect('/tweets');
     }
 

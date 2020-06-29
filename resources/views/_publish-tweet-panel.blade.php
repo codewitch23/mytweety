@@ -1,5 +1,5 @@
 <div class="px-3 py-2 tweet-box">
-    <form action="/tweet" method="POST">
+    <form action="/tweets" method="POST">
         @csrf
     <textarea
         name="body"
@@ -8,7 +8,7 @@
         <hr>
         <div class="d-flex justify-content-between align-items-center ">
             <div>
-                <img class="rounded-circle" src="https://i.pravatar.cc/50" alt="">
+                <img class="rounded-circle" src="{{auth()->user()->avatar}}" alt="">
             </div>
             <div>
                 <button type="submit" class="btn-style">Tweet</button>

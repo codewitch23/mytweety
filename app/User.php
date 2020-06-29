@@ -43,4 +43,15 @@ class User extends Authenticatable
     public function timeline(){
         return Tweet::where('user_id',$this->id)->latest()->get();
     }
+    public function getAvatarAttribute()
+    {
+        return "https://i.pravatar.cc/50?u".$this->email;
+    }
+    public function follow(User $user){
+        return $this->follows()->save($user);
+    }
+    public function follows(){
+        return $this->belongsToMany(User::class,'follows','user_id','following_id')->withTimestamps();
+    }
+
 }

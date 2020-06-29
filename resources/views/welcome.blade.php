@@ -13,7 +13,7 @@
     <h1 class="display-1">Tweety</h1>
     <div class="link">
         @auth
-            <a href="#">home</a>
+            <a href="/tweets">home</a>
         @else
             <a href="/login">login </a>
 

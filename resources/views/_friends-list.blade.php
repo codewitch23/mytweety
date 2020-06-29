@@ -1,14 +1,14 @@
 <h3>Friends</h3>
 <ul>
-    @foreach(range(1,8) as $index)
+    @foreach(auth()->user()->follows as $user)
     <li class="friends-list ">
         <div class="">
             <img
-                src="https://i.pravatar.cc/50"
+                src={{$user->avatar}}
                 alt=""
                 class="rounded-circle"
             >
-            <a href="">john doe</a>
+            <a href="">{{$user->name}}</a>
         </div>
     </li>
     @endforeach
