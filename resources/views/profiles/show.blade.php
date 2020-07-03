@@ -1,6 +1,5 @@
-@extends('layouts.app')
+<x-app>
 
-@section('content')
     <div class="profile-grid">
         <div class="bx-1">
             <img src="/img/profile.jpg">
@@ -23,4 +22,4 @@
         </div>
     </div>
     @include('_timeline',['tweets'=>$user->tweets])
-@endsection
+</x-app>
