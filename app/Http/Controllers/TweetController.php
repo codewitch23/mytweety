@@ -11,12 +11,12 @@ class TweetController extends Controller
     public function index()
     {
         $tweets = auth()->user()->timeline();
-        return view('home', ['tweets' => $tweets]);
+        return view('tweets.index', ['tweets' => $tweets]);
     }
 
     public function store(User $user)
     {
-         request()->validate(['body' => 'required|max:255']);
+        request()->validate(['body' => 'required|max:255']);
         Tweet::create([
             'user_id' => auth()->user()->id,
             'body' => request('body')

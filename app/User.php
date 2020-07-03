@@ -41,22 +41,35 @@ class User extends Authenticatable
 
     public function getAvatarAttribute()
     {
-        return "https://i.pravatar.cc/50?u".$this->email;
+        return "https://i.pravatar.cc/150?u" . $this->email;
     }
-    public function follow(User $user){
+
+    public function follow(User $user)
+    {
         return $this->follows()->save($user);
     }
-    public function follows(){
-        return $this->belongsToMany(User::class,'follows','user_id','following_id')->withTimestamps();
+
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_id')->withTimestamps();
     }
-    public function tweets(){
+
+    public function tweets()
+    {
         return $this->hasMany(Tweet::class);
     }
-    public function timeline(){
-       $friends=$this->follows()->pluck('id');
-       return Tweet::whereIn('user_id',$friends)
-           ->orWhere('user_id',$this->id)
-           ->latest()->get();
+
+    public function timeline()
+    {
+        $friends = $this->follows()->pluck('id');
+        return Tweet::whereIn('user_id', $friends)
+            ->orWhere('user_id', $this->id)
+            ->latest()->get();
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
     }
 
 }

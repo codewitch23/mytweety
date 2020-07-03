@@ -30,7 +30,22 @@
         </section>
     </div>
     <main class="py-4">
-        @yield('content')
+        <div class="container">
+            <div class="grid">
+                {{-------------------sidebox------------------}}
+                <div class="box-1">
+                    @include('_sidebar-link')
+                </div>
+                {{-------------------tweets------------------}}
+                <div class="box-2">
+                    @yield('content')
+                </div>
+                {{-------------------followers------------------}}
+                <div class="box-3">
+                    @include('_friends-list')
+                </div>
+            </div>
+        </div>
     </main>
 </div>
 </body>
